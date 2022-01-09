@@ -3,6 +3,7 @@ package com.budgetfriendly.bms.master.service.controller;
 
 import com.budgetfriendly.bms.master.service.dto.MasterCityDTO;
 import com.budgetfriendly.bms.master.service.dto.MasterRelationshipDTO;
+import com.budgetfriendly.bms.master.service.dto.MasterRoleDTO;
 import com.budgetfriendly.bms.master.service.dto.MasterStateDTO;
 import com.budgetfriendly.bms.master.service.response.BaseResponse;
 import com.budgetfriendly.bms.master.service.service.MasterService;
@@ -13,7 +14,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-@RequestMapping("master")
+@RequestMapping("bms/master/")
 public class MasterController {
 
     @Autowired
@@ -32,6 +33,11 @@ public class MasterController {
     @PostMapping("createRelationship")
     public BaseResponse createRelationship(@RequestBody MasterRelationshipDTO masterRelationshipDTO){
         return masterService.createRelationship(masterRelationshipDTO);
+    }
+
+    @PostMapping("createRole")
+    public BaseResponse createRole(@RequestBody MasterRoleDTO masterRoleDTO){
+        return masterService.createRole(masterRoleDTO);
     }
 
 }

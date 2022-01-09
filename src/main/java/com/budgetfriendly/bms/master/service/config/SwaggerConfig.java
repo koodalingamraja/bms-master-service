@@ -26,7 +26,7 @@ public class SwaggerConfig {
     public Docket swaggerConfiguration(){
         return new Docket(DocumentationType.SWAGGER_2)
                 .select()
-                .apis(RequestHandlerSelectors.basePackage("com.budgetfriendly.bms.controller"))
+                .apis(RequestHandlerSelectors.basePackage("com.budgetfriendly.bms.master.service.controller"))
                 .build()
                 .apiInfo(apiInfo());
     }

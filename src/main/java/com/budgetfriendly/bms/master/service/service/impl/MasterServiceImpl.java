@@ -3,12 +3,15 @@ package com.budgetfriendly.bms.master.service.service.impl;
 
 import com.budgetfriendly.bms.master.service.dto.MasterCityDTO;
 import com.budgetfriendly.bms.master.service.dto.MasterRelationshipDTO;
+import com.budgetfriendly.bms.master.service.dto.MasterRoleDTO;
 import com.budgetfriendly.bms.master.service.dto.MasterStateDTO;
 import com.budgetfriendly.bms.master.service.entity.MasterCity;
 import com.budgetfriendly.bms.master.service.entity.MasterRelationship;
+import com.budgetfriendly.bms.master.service.entity.MasterRole;
 import com.budgetfriendly.bms.master.service.entity.MasterState;
 import com.budgetfriendly.bms.master.service.repository.MasterCityRepository;
 import com.budgetfriendly.bms.master.service.repository.MasterRealtionshipRepository;
+import com.budgetfriendly.bms.master.service.repository.MasterRoleRepository;
 import com.budgetfriendly.bms.master.service.repository.MasterStateRepository;
 import com.budgetfriendly.bms.master.service.response.BaseResponse;
 import com.budgetfriendly.bms.master.service.service.MasterService;
@@ -33,6 +36,9 @@ public class MasterServiceImpl implements MasterService {
 
     @Autowired
     private ModelMapper modelMapper;
+    
+    @Autowired
+    private MasterRoleRepository roleRepository;
 
     @Override
     public BaseResponse createState(MasterStateDTO masterStateDTO) {
@@ -87,6 +93,25 @@ public class MasterServiceImpl implements MasterService {
             response.setStatus("success");
             response.setMessage("relationship saved successfully");
             response.setData(masterRelationship);
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+        return response;
+    }
+
+    @Override
+    public BaseResponse createRole(MasterRoleDTO roleDTO) {
+        BaseResponse response = new BaseResponse();
+        try{
+            MasterRole masterRole = new MasterRole();
+            masterRole.setRoleName(roleDTO.getRoleName());
+            masterRole.setRoleDescription(roleDTO.getRoleDescription());
+            masterRole.setStatus(Boolean.TRUE);
+            masterRole.setCreatedAt(new Date());
+            MasterRole dbMasterRole = roleRepository.save(masterRole);
+            response.setStatus("success");
+            response.setMessage("role saved successfully");
+            response.setData(dbMasterRole);
         }catch (Exception e){
             e.printStackTrace();
         }
