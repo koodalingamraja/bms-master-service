@@ -1,10 +1,7 @@
 package com.budgetfriendly.bms.master.service.controller;
 
 
-import com.budgetfriendly.bms.master.service.dto.MasterCityDTO;
-import com.budgetfriendly.bms.master.service.dto.MasterRelationshipDTO;
-import com.budgetfriendly.bms.master.service.dto.MasterRoleDTO;
-import com.budgetfriendly.bms.master.service.dto.MasterStateDTO;
+import com.budgetfriendly.bms.master.service.dto.*;
 import com.budgetfriendly.bms.master.service.response.BaseResponse;
 import com.budgetfriendly.bms.master.service.service.MasterService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -38,6 +35,11 @@ public class MasterController {
     @PostMapping("createRole")
     public BaseResponse createRole(@RequestBody MasterRoleDTO masterRoleDTO){
         return masterService.createRole(masterRoleDTO);
+    }
+
+    @PostMapping("createExpenseCategory")
+    public BaseResponse createExpenseCategory(@RequestBody MasterExpenseCategoryDTO masterExpenseCategoryDTO){
+        return masterService.createExpenseCategory(masterExpenseCategoryDTO);
     }
 
 }

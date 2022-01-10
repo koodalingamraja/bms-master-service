@@ -4,17 +4,17 @@ import javax.persistence.*;
 import java.util.Date;
 
 @Entity
-@Table(name  = "master_expensive_category")
-public class MasterExpensiveCategory {
+@Table(name  = "master_expense_category")
+public class MasterExpenseCategory {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
     private Long id;
-    @Column(name = "expensive_category_name")
-    private String expensiveCategoryName;
-    @Column(name = "expensive_category_code")
-    private String expensiveCategoryCode;
+    @Column(name = "expense_category_name")
+    private String expenseCategoryName;
+    @Column(name = "expense_category_code")
+    private String expenseCategoryCode;
     @Column(name = "status")
     private Boolean status;
     @Column(name = "created_at")
@@ -28,20 +28,20 @@ public class MasterExpensiveCategory {
         this.id = id;
     }
 
-    public String getExpensiveCategoryName() {
-        return expensiveCategoryName;
+    public String getExpenseCategoryName() {
+        return expenseCategoryName;
     }
 
-    public void setExpensiveCategoryName(String expensiveCategoryName) {
-        this.expensiveCategoryName = expensiveCategoryName;
+    public void setExpenseCategoryName(String expenseCategoryName) {
+        this.expenseCategoryName = expenseCategoryName;
     }
 
-    public String getExpensiveCategoryCode() {
-        return expensiveCategoryCode;
+    public String getExpenseCategoryCode() {
+        return expenseCategoryCode;
     }
 
-    public void setExpensiveCategoryCode(String expensiveCategoryCode) {
-        this.expensiveCategoryCode = expensiveCategoryCode;
+    public void setExpenseCategoryCode(String expenseCategoryCode) {
+        this.expenseCategoryCode = expenseCategoryCode;
     }
 
     public Boolean getStatus() {

@@ -1,18 +1,9 @@
 package com.budgetfriendly.bms.master.service.service.impl;
 
 
-import com.budgetfriendly.bms.master.service.dto.MasterCityDTO;
-import com.budgetfriendly.bms.master.service.dto.MasterRelationshipDTO;
-import com.budgetfriendly.bms.master.service.dto.MasterRoleDTO;
-import com.budgetfriendly.bms.master.service.dto.MasterStateDTO;
-import com.budgetfriendly.bms.master.service.entity.MasterCity;
-import com.budgetfriendly.bms.master.service.entity.MasterRelationship;
-import com.budgetfriendly.bms.master.service.entity.MasterRole;
-import com.budgetfriendly.bms.master.service.entity.MasterState;
-import com.budgetfriendly.bms.master.service.repository.MasterCityRepository;
-import com.budgetfriendly.bms.master.service.repository.MasterRealtionshipRepository;
-import com.budgetfriendly.bms.master.service.repository.MasterRoleRepository;
-import com.budgetfriendly.bms.master.service.repository.MasterStateRepository;
+import com.budgetfriendly.bms.master.service.dto.*;
+import com.budgetfriendly.bms.master.service.entity.*;
+import com.budgetfriendly.bms.master.service.repository.*;
 import com.budgetfriendly.bms.master.service.response.BaseResponse;
 import com.budgetfriendly.bms.master.service.service.MasterService;
 import org.modelmapper.ModelMapper;
@@ -39,6 +30,9 @@ public class MasterServiceImpl implements MasterService {
     
     @Autowired
     private MasterRoleRepository roleRepository;
+
+    @Autowired
+    private MasterExpenseCategoryRepository expenseCategoryRepository;
 
     @Override
     public BaseResponse createState(MasterStateDTO masterStateDTO) {
@@ -112,6 +106,25 @@ public class MasterServiceImpl implements MasterService {
             response.setStatus("success");
             response.setMessage("role saved successfully");
             response.setData(dbMasterRole);
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+        return response;
+    }
+
+    @Override
+    public BaseResponse createExpenseCategory(MasterExpenseCategoryDTO masterExpenseCategoryDTO) {
+        BaseResponse response = new BaseResponse();
+        try{
+            MasterExpenseCategory masterExpenseCategory = new MasterExpenseCategory();
+            masterExpenseCategory.setExpenseCategoryName(masterExpenseCategoryDTO.getExpensiveCategoryName());
+            masterExpenseCategory.setExpenseCategoryCode(masterExpenseCategoryDTO.getExpensiveCategoryCode());
+            masterExpenseCategory.setStatus(Boolean.TRUE);
+            masterExpenseCategory.setCreatedAt(new Date());
+            MasterExpenseCategory dbMasterExpenseCate = expenseCategoryRepository.save(masterExpenseCategory);
+            response.setStatus("success");
+            response.setMessage("expense saved successfully");
+            response.setData(dbMasterExpenseCate);
         }catch (Exception e){
             e.printStackTrace();
         }
