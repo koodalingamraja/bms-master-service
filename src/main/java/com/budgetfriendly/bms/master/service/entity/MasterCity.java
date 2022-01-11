@@ -19,6 +19,8 @@ public class MasterCity {
     private Boolean status;
     @Column(name = "created_at")
     private Date createdAt;
+    @Column(name = "updated_at")
+    private Date updatedAt;
     @ManyToOne
     @JoinColumn(name = "master_state_id_fk")
     private MasterState masterState;
@@ -69,5 +71,13 @@ public class MasterCity {
 
     public void setMasterState(MasterState masterState) {
         this.masterState = masterState;
+    }
+
+    public Date getUpdatedAt() {
+        return updatedAt;
+    }
+
+    public void setUpdatedAt(Date updatedAt) {
+        this.updatedAt = updatedAt;
     }
 }

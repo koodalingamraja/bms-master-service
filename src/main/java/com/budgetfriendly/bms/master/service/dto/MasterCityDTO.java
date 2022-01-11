@@ -10,6 +10,7 @@ public class MasterCityDTO {
     private String cityCode;
     private Boolean status;
     private Date createdAt;
+    private Date updatedAt;
     private MasterStateDTO masterStateDTO;
 
     public Long getId() {
@@ -58,5 +59,13 @@ public class MasterCityDTO {
 
     public void setMasterStateDTO(MasterStateDTO masterStateDTO) {
         this.masterStateDTO = masterStateDTO;
+    }
+
+    public Date getUpdatedAt() {
+        return updatedAt;
+    }
+
+    public void setUpdatedAt(Date updatedAt) {
+        this.updatedAt = updatedAt;
     }
 }
