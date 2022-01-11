@@ -15,8 +15,8 @@ public class SwaggerConfig {
 
     public ApiInfo apiInfo(){
         return new ApiInfoBuilder()
-                .title("Budget Management System Application api's")
-                .description("Budget Management System Application Read, Write and update operations.")
+                .title("Budget Management System Application master api's")
+                .description("Budget Management System Application Read, Master Data Write and update operations.")
                 .termsOfServiceUrl("")
                 .version("1.0")
                 .build();
